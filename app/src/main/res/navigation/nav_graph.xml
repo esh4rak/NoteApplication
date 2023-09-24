@@ -6,7 +6,7 @@
     app:startDestination="@id/registerFragment">
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.eshrak.noteapplication.RegisterFragment"
+        android:name="com.eshrak.noteapplication.ui.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.eshrak.noteapplication.LoginFragment"
+        android:name="com.eshrak.noteapplication.ui.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.eshrak.noteapplication.MainFragment"
+        android:name="com.eshrak.noteapplication.ui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/noteFragment"
-        android:name="com.eshrak.noteapplication.NoteFragment"
+        android:name="com.eshrak.noteapplication.ui.NoteFragment"
         android:label="fragment_note"
         tools:layout="@layout/fragment_note" />
 </navigation>

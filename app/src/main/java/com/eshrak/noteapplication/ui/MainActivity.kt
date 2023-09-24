@@ -1,7 +1,8 @@
-package com.eshrak.noteapplication
+package com.eshrak.noteapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.eshrak.noteapplication.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

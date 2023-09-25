@@ -31,12 +31,13 @@ class AuthViewModel @Inject constructor(private val userRepository: UserReposito
 
 
     fun validateCredentials(
-        username: String, emailAddress: String, password: String
+        username: String, emailAddress: String, password: String, isLogin: Boolean
     ): Pair<Boolean, String> {
+
+
         var result = Pair(true, "")
 
-
-        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(emailAddress) || TextUtils.isEmpty(
+        if ((!isLogin && TextUtils.isEmpty(username)) || TextUtils.isEmpty(emailAddress) || TextUtils.isEmpty(
                 password
             )
         ) {
@@ -50,5 +51,6 @@ class AuthViewModel @Inject constructor(private val userRepository: UserReposito
         return result
 
     }
+
 
 }

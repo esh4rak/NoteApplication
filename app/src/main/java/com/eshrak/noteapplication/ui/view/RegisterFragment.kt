@@ -37,7 +37,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        
+
         binding.btnSignUp.setOnClickListener {
 
             val userRequest = getUserRequest()
@@ -76,7 +76,7 @@ class RegisterFragment : Fragment() {
         username: String, emailAddress: String, password: String
     ): Pair<Boolean, String> {
 
-        return authViewModel.validateCredentials(username, emailAddress, password)
+        return authViewModel.validateCredentials(username, emailAddress, password, false)
     }
 
     private fun bindObservers() {

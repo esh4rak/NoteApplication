@@ -39,7 +39,9 @@ class RegisterFragment : Fragment() {
 
 
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            //findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+
+            authViewModel.loginUser(UserRequest("test2@gmail.com", "12345", "test"))
         }
 
         return binding.root

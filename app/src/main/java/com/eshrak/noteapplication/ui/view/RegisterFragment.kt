@@ -33,7 +33,7 @@ class RegisterFragment : Fragment() {
         binding.btnSignUp.setOnClickListener {
             //findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
 
-            authViewModel.registerUser(UserRequest("test@gmail.com", "12345", "test"))
+            authViewModel.registerUser(UserRequest("test2@gmail.com", "12345", "test"))
 
         }
 

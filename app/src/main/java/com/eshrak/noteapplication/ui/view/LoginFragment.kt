@@ -43,7 +43,7 @@ class LoginFragment : Fragment() {
 
             val userRequest = getUserRequest()
 
-            val validationResult = validateUserInput(userRequest.email, userRequest.password)
+            val validationResult = validateUserInput(userRequest)
 
             if (validationResult.first) {
                 authViewModel.loginUser(userRequest)
@@ -96,10 +96,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun validateUserInput(
-        emailAddress: String, password: String
+        userRequest: UserRequest
     ): Pair<Boolean, String> {
 
-        return authViewModel.validateCredentials("", emailAddress, password, true)
+        return authViewModel.validateCredentials("", userRequest.email, userRequest.password, true)
     }
 
 

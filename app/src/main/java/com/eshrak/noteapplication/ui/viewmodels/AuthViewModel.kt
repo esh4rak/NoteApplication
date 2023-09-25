@@ -11,7 +11,6 @@ import com.eshrak.noteapplication.data.repository.UserRepository
 import com.eshrak.noteapplication.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.util.regex.Pattern
 import javax.inject.Inject
 
 

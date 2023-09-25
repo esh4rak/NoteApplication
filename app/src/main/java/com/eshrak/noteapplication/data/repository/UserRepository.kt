@@ -1,12 +1,10 @@
 package com.eshrak.noteapplication.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.eshrak.noteapplication.data.api.UserAPI
 import com.eshrak.noteapplication.data.models.UserRequest
 import com.eshrak.noteapplication.data.models.UserResponse
-import com.eshrak.noteapplication.util.Constants.TAG
 import com.eshrak.noteapplication.util.NetworkResult
 import org.json.JSONObject
 import retrofit2.Response

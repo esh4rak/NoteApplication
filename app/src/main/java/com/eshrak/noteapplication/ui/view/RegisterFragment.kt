@@ -42,8 +42,7 @@ class RegisterFragment : Fragment() {
 
             val userRequest = getUserRequest()
 
-            val validationResult =
-                validateUserInput(userRequest.username, userRequest.email, userRequest.password)
+            val validationResult = validateUserInput(userRequest)
 
             if (validationResult.first) {
                 authViewModel.registerUser(userRequest)
@@ -73,10 +72,12 @@ class RegisterFragment : Fragment() {
     }
 
     private fun validateUserInput(
-        username: String, emailAddress: String, password: String
+        userRequest: UserRequest
     ): Pair<Boolean, String> {
 
-        return authViewModel.validateCredentials(username, emailAddress, password, false)
+        return authViewModel.validateCredentials(
+            userRequest.username, userRequest.email, userRequest.password, false
+        )
     }
 
     private fun bindObservers() {

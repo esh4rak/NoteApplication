@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
 
-    val userResponseLiveData : LiveData<NetworkResult<UserResponse>>
+    val userResponseLiveData: LiveData<NetworkResult<UserResponse>>
         get() = userRepository.userResponseLiveData
 
     fun registerUser(userRequest: UserRequest) {

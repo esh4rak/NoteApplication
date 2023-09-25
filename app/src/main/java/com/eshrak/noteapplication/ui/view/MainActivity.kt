@@ -1,9 +1,11 @@
-package com.eshrak.noteapplication.ui
+package com.eshrak.noteapplication.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.eshrak.noteapplication.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 

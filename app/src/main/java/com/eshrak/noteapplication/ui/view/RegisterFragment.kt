@@ -1,19 +1,27 @@
-package com.eshrak.noteapplication.ui
+package com.eshrak.noteapplication.ui.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.eshrak.noteapplication.R
+import com.eshrak.noteapplication.data.models.UserRequest
 import com.eshrak.noteapplication.databinding.FragmentRegisterBinding
+import com.eshrak.noteapplication.ui.viewmodels.AuthViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
+
+
+    private val authViewModel by viewModels<AuthViewModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -23,7 +31,10 @@ class RegisterFragment : Fragment() {
 
 
         binding.btnSignUp.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
+            //findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
+
+            authViewModel.registerUser(UserRequest("test@gmail.com", "12345", "test"))
+
         }
 
 

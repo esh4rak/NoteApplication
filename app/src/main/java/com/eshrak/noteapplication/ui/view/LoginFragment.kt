@@ -13,7 +13,9 @@ import com.eshrak.noteapplication.data.models.UserRequest
 import com.eshrak.noteapplication.databinding.FragmentLoginBinding
 import com.eshrak.noteapplication.ui.viewmodels.AuthViewModel
 import com.eshrak.noteapplication.util.NetworkResult
+import com.eshrak.noteapplication.util.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -21,9 +23,10 @@ class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-
-
     private val authViewModel by viewModels<AuthViewModel>()
+
+    @Inject
+    lateinit var tokenManager: TokenManager
 
 
     override fun onCreateView(
@@ -68,8 +71,9 @@ class LoginFragment : Fragment() {
 
                 is NetworkResult.Success -> {
 
-                    //Token
                     binding.progressbar.visibility = View.GONE
+
+                    tokenManager.saveToken(it.data!!.token)
                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 }
 

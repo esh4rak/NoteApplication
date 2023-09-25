@@ -13,16 +13,19 @@ import com.eshrak.noteapplication.data.models.UserRequest
 import com.eshrak.noteapplication.databinding.FragmentRegisterBinding
 import com.eshrak.noteapplication.ui.viewmodels.AuthViewModel
 import com.eshrak.noteapplication.util.NetworkResult
+import com.eshrak.noteapplication.util.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
-
-
     private val authViewModel by viewModels<AuthViewModel>()
+
+    @Inject
+    lateinit var tokenManager: TokenManager
 
 
     override fun onCreateView(
@@ -30,6 +33,11 @@ class RegisterFragment : Fragment() {
     ): View? {
 
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+
+        if (tokenManager.getToken() != null) {
+            findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
+        }
+
         return binding.root
 
     }
@@ -87,7 +95,10 @@ class RegisterFragment : Fragment() {
             when (it) {
 
                 is NetworkResult.Success -> {
+
                     binding.progressbar.visibility = View.GONE
+
+                    tokenManager.saveToken(it.data!!.token)
                     findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
                 }
 

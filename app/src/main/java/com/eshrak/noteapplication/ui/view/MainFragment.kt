@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.eshrak.noteapplication.R
+import com.eshrak.noteapplication.data.models.NoteResponse
 import com.eshrak.noteapplication.databinding.FragmentMainBinding
 import com.eshrak.noteapplication.ui.adapters.NoteAdapter
 import com.eshrak.noteapplication.ui.viewmodels.NoteViewModel
 import com.eshrak.noteapplication.util.NetworkResult
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -33,7 +37,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-        adapter = NoteAdapter()
+        adapter = NoteAdapter(::onNoteClicked)
         return binding.root
     }
 
@@ -54,6 +58,10 @@ class MainFragment : Fragment() {
         //Get Notes
         noteViewModel.getNotes()
 
+
+        binding.addNote.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_noteFragment)
+        }
 
     }
 
@@ -79,6 +87,16 @@ class MainFragment : Fragment() {
             }
         })
     }
+
+
+    private fun onNoteClicked(noteResponse: NoteResponse) {
+
+        val bundle = Bundle()
+        bundle.putString("note", Gson().toJson(noteResponse))
+        findNavController().navigate(R.id.action_mainFragment_to_noteFragment, bundle)
+
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

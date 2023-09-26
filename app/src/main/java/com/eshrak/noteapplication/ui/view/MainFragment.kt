@@ -65,11 +65,9 @@ class MainFragment : Fragment() {
                 is NetworkResult.Success -> {
                     binding.progressBar.visibility = View.GONE
                     adapter.submitList(it.data)
-
                 }
 
                 is NetworkResult.Error -> {
-
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT)
                         .show()

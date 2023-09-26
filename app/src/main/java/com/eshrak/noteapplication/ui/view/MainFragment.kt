@@ -13,8 +13,10 @@ import com.eshrak.noteapplication.databinding.FragmentMainBinding
 import com.eshrak.noteapplication.ui.adapters.NoteAdapter
 import com.eshrak.noteapplication.ui.viewmodels.NoteViewModel
 import com.eshrak.noteapplication.util.NetworkResult
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
 
@@ -40,6 +42,11 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        //Recycler View
+        binding.noteList.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        binding.noteList.adapter = adapter
+
         //Observers
         bindObservers()
 
@@ -48,10 +55,6 @@ class MainFragment : Fragment() {
         noteViewModel.getNotes()
 
 
-        //Recycler View
-        binding.noteList.layoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.noteList.adapter = adapter
     }
 
 

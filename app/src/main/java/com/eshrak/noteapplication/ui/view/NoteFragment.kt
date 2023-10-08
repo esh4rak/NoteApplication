@@ -67,7 +67,7 @@ class NoteFragment : Fragment() {
 
         binding.btnDelete.setOnClickListener {
             note?.let {
-                noteViewModel.deleteNote(it!!._id)
+                noteViewModel.deleteNote(it._id)
             }
         }
 

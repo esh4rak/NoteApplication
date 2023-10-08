@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eshrak.noteapplication.data.models.NoteRequest
 import com.eshrak.noteapplication.data.repository.NoteRepository
+import com.eshrak.noteapplication.util.NetworkResult
 import com.eshrak.noteapplication.util.NetworkUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -36,8 +37,21 @@ class NoteViewModel @Inject constructor(
 
 
     fun createNote(noteRequest: NoteRequest) {
-        viewModelScope.launch {
-            noteRepository.createNote(noteRequest)
+
+        val isInternetConnected = NetworkUtils.isInternetAvailable(application.applicationContext)
+
+        if (isInternetConnected) {
+            try {
+                viewModelScope.launch {
+                    noteRepository.createNote(noteRequest)
+                }
+            } catch (e: Exception) {
+                // Handle the exception here and provide an appropriate error message
+                statusLiveData.postValue(NetworkResult.Error("Failed to create note: ${e.message}"))
+            }
+        } else {
+            // Display a message to the user that there is no network connectivity
+            statusLiveData.postValue(NetworkResult.Error("No network connectivity"))
         }
     }
 

@@ -7,6 +7,8 @@ import com.eshrak.noteapplication.data.api.NoteApi
 import com.eshrak.noteapplication.data.models.NoteRequest
 import com.eshrak.noteapplication.data.models.NoteResponse
 import com.eshrak.noteapplication.util.NetworkResult
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import retrofit2.Response
 import javax.inject.Inject
@@ -26,29 +28,49 @@ class NoteRepository @Inject constructor(
         get() = _statusLiveData
 
 
-    suspend fun getNotes() {
+    suspend fun getNotesFromApi() {
+        try {
 
-        // First, fetching data from the local Room database
-        val localNotes = noteDao.getAllNotes()
-
-        if (localNotes.isNotEmpty()) {
-            _noteLiveData.postValue(NetworkResult.Success(localNotes))
-        } else {
-            // If local data is not available, fetch data from the network
-            _noteLiveData.postValue(NetworkResult.Loading())
             val response = noteApi.getNotes()
 
             if (response.isSuccessful && response.body() != null) {
+
                 // Cache the data in the Room database
                 val notes = response.body()!!
-                noteDao.insertNotes(notes)
+                withContext(Dispatchers.IO) {
+                    noteDao.insertNotes(notes)
+                }
+
                 _noteLiveData.postValue(NetworkResult.Success(notes))
+
             } else if (response.errorBody() != null) {
                 val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
                 _noteLiveData.postValue(NetworkResult.Error(errorObj.getString("message")))
             } else {
                 _noteLiveData.postValue(NetworkResult.Error("Something Went Wrong"))
             }
+        } catch (e: Exception) {
+            // Handle exceptions, such as network errors
+            _noteLiveData.postValue(NetworkResult.Error("An error occurred: ${e.message}"))
+        }
+    }
+
+
+    suspend fun getNotesFromRoom() {
+        try {
+            // Fetch data from the Room database on a background thread
+            val localNotes = withContext(Dispatchers.IO) {
+                noteDao.getAllNotes()
+            }
+
+            if (localNotes.isNotEmpty()) {
+                _noteLiveData.postValue(NetworkResult.Success(localNotes))
+            } else {
+                _noteLiveData.postValue(NetworkResult.Error("No Data Available"))
+            }
+        } catch (e: Exception) {
+            // Handle exceptions, such as database errors
+            _noteLiveData.postValue(NetworkResult.Error("An error occurred: ${e.message}"))
         }
     }
 

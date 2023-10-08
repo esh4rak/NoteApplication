@@ -1,17 +1,19 @@
 package com.eshrak.noteapplication.data.repository
 
+import com.eshrak.noteapplication.data.db.NoteDao
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.eshrak.noteapplication.data.api.NoteApi
 import com.eshrak.noteapplication.data.models.NoteRequest
 import com.eshrak.noteapplication.data.models.NoteResponse
-import com.eshrak.noteapplication.data.models.UserResponse
 import com.eshrak.noteapplication.util.NetworkResult
 import org.json.JSONObject
 import retrofit2.Response
 import javax.inject.Inject
 
-class NoteRepository @Inject constructor(private val noteApi: NoteApi) {
+class NoteRepository @Inject constructor(
+    private val noteApi: NoteApi, private val noteDao: NoteDao
+) {
 
 
     private val _noteLiveData = MutableLiveData<NetworkResult<List<NoteResponse>>>()
@@ -26,21 +28,28 @@ class NoteRepository @Inject constructor(private val noteApi: NoteApi) {
 
     suspend fun getNotes() {
 
-        _noteLiveData.postValue(NetworkResult.Loading())
-        val response = noteApi.getNotes()
+        // First, fetching data from the local Room database
+        val localNotes = noteDao.getAllNotes()
 
-
-        if (response.isSuccessful && response.body() != null) {
-            _noteLiveData.postValue(NetworkResult.Success(response.body()!!))
-
-        } else if (response.errorBody() != null) {
-            val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
-            _noteLiveData.postValue(NetworkResult.Error(errorObj.getString("message")))
-
+        if (localNotes.isNotEmpty()) {
+            _noteLiveData.postValue(NetworkResult.Success(localNotes))
         } else {
-            _noteLiveData.postValue(NetworkResult.Error("Something Went Wrong"))
-        }
+            // If local data is not available, fetch data from the network
+            _noteLiveData.postValue(NetworkResult.Loading())
+            val response = noteApi.getNotes()
 
+            if (response.isSuccessful && response.body() != null) {
+                // Cache the data in the Room database
+                val notes = response.body()!!
+                noteDao.insertNotes(notes)
+                _noteLiveData.postValue(NetworkResult.Success(notes))
+            } else if (response.errorBody() != null) {
+                val errorObj = JSONObject(response.errorBody()!!.charStream().readText())
+                _noteLiveData.postValue(NetworkResult.Error(errorObj.getString("message")))
+            } else {
+                _noteLiveData.postValue(NetworkResult.Error("Something Went Wrong"))
+            }
+        }
     }
 
 

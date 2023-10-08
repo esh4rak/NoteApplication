@@ -1,21 +1,19 @@
 package com.eshrak.noteapplication.ui.viewmodels
 
-import android.content.Context
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eshrak.noteapplication.data.models.NoteRequest
 import com.eshrak.noteapplication.data.repository.NoteRepository
 import com.eshrak.noteapplication.util.NetworkUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class NoteViewModel @Inject constructor(
-    private val noteRepository: NoteRepository,
-    @ApplicationContext private val applicationContext: Context
+    private val noteRepository: NoteRepository, private val application: Application
 ) : ViewModel() {
 
 
@@ -25,7 +23,8 @@ class NoteViewModel @Inject constructor(
 
     fun getNotes() {
         viewModelScope.launch {
-            val isInternetConnected = NetworkUtils.isInternetAvailable(applicationContext)
+            val isInternetConnected =
+                NetworkUtils.isInternetAvailable(application.applicationContext)
 
             if (isInternetConnected) {
                 noteRepository.getNotesFromApi()

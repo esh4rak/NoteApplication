@@ -31,6 +31,7 @@ class NoteRepository @Inject constructor(
     suspend fun getNotesFromApi() {
         try {
 
+            _noteLiveData.postValue(NetworkResult.Loading())
             val response = noteApi.getNotes()
 
             if (response.isSuccessful && response.body() != null) {

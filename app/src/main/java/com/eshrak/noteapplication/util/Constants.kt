@@ -9,7 +9,4 @@ object Constants {
     const val USER_NAME = "USER_NAME"
     const val USER_EMAIL = "USER_EMAIL"
 
-    const val NOTE_TABLE = "note_table"
-    const val NOTE_DATABASE = "note_database"
-
 }

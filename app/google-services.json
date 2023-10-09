@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "902132447137",
+    "project_id": "noteapp-cc347",
+    "storage_bucket": "noteapp-cc347.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902132447137:android:329301f26e265881f4bde0",
+        "android_client_info": {
+          "package_name": "com.eshrak.noteapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgx3SXX8cdSGd3DrX2_1iAcyTVmt9LrZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

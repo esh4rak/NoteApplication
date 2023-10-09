@@ -4,9 +4,25 @@ plugins {
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("D:\\Workspace\\JKS\\NoteApp\\eshraknoteapp.jks")
+            storePassword = "eshrak522"
+            keyAlias = "key0"
+            keyPassword = "eshrak522"
+        }
+        create("release") {
+            storeFile = file("D:\\Workspace\\JKS\\NoteApp\\eshraknoteapp.jks")
+            storePassword = "eshrak522"
+            keyAlias = "key0"
+            keyPassword = "eshrak522"
+        }
+    }
     namespace = "com.eshrak.noteapplication"
     compileSdk = 34
 
@@ -93,6 +109,14 @@ dependencies {
     val navVersion = "2.7.3"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+
+
 }
 
 

@@ -92,7 +92,13 @@ class RegisterFragment : Fragment() {
 
                 is NetworkResult.Success -> {
                     binding.progressbar.visibility = View.GONE
-                    tokenManager.saveToken(it.data!!.token)
+
+                    it.data?.let { it1 ->
+                        tokenManager.saveToken(
+                            it1.token, it1.user.username, it1.user.email
+                        )
+                    }
+
                     findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
                 }
 

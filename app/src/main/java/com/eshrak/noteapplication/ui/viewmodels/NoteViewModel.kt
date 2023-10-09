@@ -57,15 +57,42 @@ class NoteViewModel @Inject constructor(
 
 
     fun updateNote(noteId: String, noteRequest: NoteRequest) {
-        viewModelScope.launch {
-            noteRepository.updateNote(noteId, noteRequest)
+
+        val isInternetConnected = NetworkUtils.isInternetAvailable(application.applicationContext)
+
+        if (isInternetConnected) {
+            try {
+                viewModelScope.launch {
+                    noteRepository.updateNote(noteId, noteRequest)
+                }
+            } catch (e: Exception) {
+                // Handle the exception here and provide an appropriate error message
+                statusLiveData.postValue(NetworkResult.Error("Failed to update note: ${e.message}"))
+            }
+        } else {
+            // Display a message to the user that there is no network connectivity
+            statusLiveData.postValue(NetworkResult.Error("No network connectivity"))
         }
+
     }
 
 
     fun deleteNote(noteId: String) {
-        viewModelScope.launch {
-            noteRepository.deleteNote(noteId)
+
+        val isInternetConnected = NetworkUtils.isInternetAvailable(application.applicationContext)
+
+        if (isInternetConnected) {
+            try {
+                viewModelScope.launch {
+                    noteRepository.deleteNote(noteId)
+                }
+            } catch (e: Exception) {
+                // Handle the exception here and provide an appropriate error message
+                statusLiveData.postValue(NetworkResult.Error("Failed to delete note: ${e.message}"))
+            }
+        } else {
+            // Display a message to the user that there is no network connectivity
+            statusLiveData.postValue(NetworkResult.Error("No network connectivity"))
         }
     }
 

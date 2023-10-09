@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Force Test Crash
-        testCrash()
+        //testCrash()
     }
 
-    private fun testCrash() {
+    /*private fun testCrash() {
         val crashButton = Button(this)
         crashButton.text = "Test Crash"
         crashButton.setOnClickListener {
@@ -36,5 +36,5 @@ class MainActivity : AppCompatActivity() {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
         )
-    }
+    }*/
 }

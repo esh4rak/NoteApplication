@@ -105,7 +105,7 @@ class MainFragment : Fragment() {
                 R.id.nav_logout -> {
                     binding.drawerLayout.closeDrawers()
                     tokenManager.clearSharedPreferences()
-                    findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+                    findNavController().navigate(R.id.action_mainFragment_to_registerFragment)
                 }
             }
 

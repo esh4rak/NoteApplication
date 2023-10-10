@@ -35,4 +35,10 @@ class TokenManager @Inject constructor(@ApplicationContext context: Context) {
 
     }
 
+    fun clearSharedPreferences() {
+        val editor = prefs.edit()
+        editor.clear()
+        editor.apply()
+    }
+
 }

@@ -87,23 +87,25 @@ class MainFragment : Fragment() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    //ToDo
+                    binding.drawerLayout.closeDrawers()
                 }
 
                 R.id.nav_settings -> {
-                    //ToDo
+                    binding.drawerLayout.closeDrawers()
                 }
 
                 R.id.nav_share -> {
-                    //ToDo
+                    binding.drawerLayout.closeDrawers()
                 }
 
                 R.id.nav_about -> {
-                    //ToDo
+                    binding.drawerLayout.closeDrawers()
                 }
 
                 R.id.nav_logout -> {
                     binding.drawerLayout.closeDrawers()
+                    tokenManager.clearSharedPreferences()
+                    findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
                 }
             }
 

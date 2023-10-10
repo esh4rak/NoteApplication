@@ -4,10 +4,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="light_gray">#a2a2a2</color>
-    <color name="highlight_text_color">#2196F3</color>
+    <color name="highlight_text_color">#8692f7</color>
 
-    <color name="colorPrimary">#64B5F6</color>
-    <color name="colorPrimaryVariant">#2196F3</color>
+    <color name="colorPrimary">#8692f7</color>
+    <color name="colorPrimaryVariant">#656B9C</color>
 
     <color name="colorSecondary">#1F4D73</color>
     <color name="colorSecondaryVariant">#092337</color>

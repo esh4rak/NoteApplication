@@ -56,10 +56,12 @@ class NoteFragment : Fragment() {
             note?.let {
                 binding.noteTitleET.setText(it.title)
                 binding.noteDescriptionET.setText(it.description)
+                binding.deleteButton.visibility = View.VISIBLE
             }
 
         } else {
             binding.title.text = "Add Note"
+            binding.deleteButton.visibility = View.GONE
         }
     }
 

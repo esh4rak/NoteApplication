@@ -32,9 +32,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:fontFamily="@font/sf_pro_display_regular"
+            android:fontFamily="@font/sf_pro_display_medium"
             android:text="@string/txt_login_subheader"
             android:textColor="@color/textColor_two"
             android:textSize="16sp"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="64dp"
-            android:fontFamily="@font/sf_pro_display_medium"
+            android:fontFamily="@font/sf_pro_display_semibold"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="3.5sp"
             android:text="@string/txt_email"
@@ -92,7 +92,7 @@
                     android:layout_marginTop="0dp"
                     android:inputType="textEmailAddress"
                     android:paddingTop="8dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/sf_pro_display_medium"
+            android:fontFamily="@font/sf_pro_display_semibold"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="3.5sp"
             android:text="@string/txt_password"
@@ -148,7 +148,7 @@
                     android:drawableTint="@color/labelColor_gray"
                     android:inputType="textPassword"
                     android:paddingTop="7dp"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 

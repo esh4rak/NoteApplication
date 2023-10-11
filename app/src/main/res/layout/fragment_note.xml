@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/sf_pro_display_medium"
+        android:fontFamily="@font/sf_pro_display_semibold"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="3.5sp"
         android:text="@string/note_title"
@@ -57,6 +57,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,10 +78,9 @@
             android:inputType="textMultiLine"
             android:lineSpacingExtra="4sp"
             android:lines="1"
-            android:maxLines="2"
             android:scrollbars="vertical"
             android:textCursorDrawable="@null"
-            android:textSize="12sp"
+            android:textSize="14sp"
             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
 
@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/sf_pro_display_medium"
+        android:fontFamily="@font/sf_pro_display_semibold"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="3.5sp"
         android:text="@string/txt_description"
@@ -110,6 +110,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +133,7 @@
             android:lines="8"
             android:scrollbars="vertical"
             android:textCursorDrawable="@null"
-            android:textSize="12sp"
+            android:textSize="14sp"
             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
 

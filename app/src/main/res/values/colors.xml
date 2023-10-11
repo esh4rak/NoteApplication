@@ -3,8 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="light_gray">#a2a2a2</color>
-    <color name="highlight_text_color">#8692f7</color>
 
     <color name="colorPrimary">#8692f7</color>
     <color name="colorPrimaryVariant">#656B9C</color>
@@ -13,5 +11,11 @@
     <color name="colorSecondaryVariant">#092337</color>
 
     <color name="lavender">#8692f7</color>
+
+
+    <color name="textColor_two">#060c2e</color>
+    <color name="textColor_three">#202731</color>
+    <color name="textColor_gray">#4A4848</color>
+    <color name="labelColor_gray">#7a9db0</color>
 
 </resources>

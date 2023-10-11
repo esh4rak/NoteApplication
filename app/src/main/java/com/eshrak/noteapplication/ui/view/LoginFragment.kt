@@ -42,7 +42,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.btnLogin.setOnClickListener {
+        binding.loginButton.setOnClickListener {
 
             val userRequest = getUserRequest()
             val validationResult = validateUserInput(userRequest)
@@ -50,13 +50,13 @@ class LoginFragment : Fragment() {
             if (validationResult.first) {
                 authViewModel.loginUser(userRequest)
             } else {
-                binding.txtError.text = validationResult.second
+                binding.errorText.text = validationResult.second
             }
 
         }
 
 
-        binding.btnSignUp.setOnClickListener {
+        binding.signupButton.setOnClickListener {
             findNavController().popBackStack()
         }
 
@@ -80,7 +80,7 @@ class LoginFragment : Fragment() {
 
                 is NetworkResult.Error -> {
                     binding.progressbar.visibility = View.GONE
-                    binding.txtError.text = it.message
+                    binding.errorText.text = it.message
                 }
 
                 is NetworkResult.Loading -> {
@@ -93,8 +93,8 @@ class LoginFragment : Fragment() {
 
 
     private fun getUserRequest(): UserRequest {
-        val emailAddress = binding.txtEmail.text.toString()
-        val password = binding.txtPassword.text.toString()
+        val emailAddress = binding.emailET.text.toString()
+        val password = binding.passwordET.text.toString()
         return UserRequest(emailAddress, password, "")
     }
 

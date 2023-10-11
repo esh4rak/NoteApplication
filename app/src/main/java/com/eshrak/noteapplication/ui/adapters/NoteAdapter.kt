@@ -28,7 +28,7 @@ class NoteAdapter(private val onNoteClicked: (NoteResponse) -> Unit) :
 
         fun bind(note: NoteResponse) {
             binding.title.text = note.title
-            binding.desc.text = note.description
+            binding.description.text = note.description
             binding.root.setOnClickListener {
                 onNoteClicked(note)
             }

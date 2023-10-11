@@ -57,9 +57,9 @@ class MainFragment : Fragment() {
 
 
         //Recycler View
-        binding.noteList.layoutManager =
+        binding.recyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.noteList.adapter = adapter
+        binding.recyclerView.adapter = adapter
 
         //Observers
         bindObservers()
@@ -74,7 +74,7 @@ class MainFragment : Fragment() {
 
     private fun bindHandler() {
 
-        binding.addNote.setOnClickListener {
+        binding.addNoteButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_noteFragment)
         }
 

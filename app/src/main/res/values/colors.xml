@@ -4,11 +4,11 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="colorPrimary">#8692f7</color>
-    <color name="colorPrimaryVariant">#656B9C</color>
+    <color name="colorPrimary">#092337</color>
+    <color name="colorPrimaryVariant">#41617A</color>
 
-    <color name="colorSecondary">#1F4D73</color>
-    <color name="colorSecondaryVariant">#092337</color>
+    <color name="colorSecondary">#8692f7</color>
+    <color name="colorSecondaryVariant">#656B9C</color>
 
     <color name="lavender">#8692f7</color>
 

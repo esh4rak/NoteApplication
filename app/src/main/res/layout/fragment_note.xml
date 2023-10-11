@@ -79,7 +79,6 @@
             android:lineSpacingExtra="4sp"
             android:lines="1"
             android:scrollbars="vertical"
-            android:textCursorDrawable="@null"
             android:textSize="14sp"
             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
@@ -132,7 +131,6 @@
             android:lineSpacingExtra="4sp"
             android:lines="8"
             android:scrollbars="vertical"
-            android:textCursorDrawable="@null"
             android:textSize="14sp"
             tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 

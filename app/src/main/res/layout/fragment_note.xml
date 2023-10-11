@@ -14,7 +14,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/sf_pro_display_bold"
         android:text="Edit Note"
-        android:textColor="@color/colorSecondaryVariant"
+        android:textColor="@color/colorPrimary"
         android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/title"
-        app:tint="@color/colorSecondaryVariant"
+        app:tint="@color/colorPrimary"
         tools:ignore="ContentDescription" />
 
 
@@ -150,12 +150,12 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:backgroundTint="@color/colorSecondaryVariant"
+        app:backgroundTint="@color/colorPrimary"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noteDescriptionCardView"
-        app:strokeColor="@color/colorSecondaryVariant"
+        app:strokeColor="@color/colorPrimary"
         app:strokeWidth="1dp"
         tools:ignore="DuplicateSpeakableTextCheck" />
 

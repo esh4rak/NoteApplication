@@ -4,17 +4,15 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="colorPrimary">#092337</color>
-    <color name="colorPrimaryVariant">#41617A</color>
-
-    <color name="colorSecondary">#8692f7</color>
-    <color name="colorSecondaryVariant">#656B9C</color>
+    <color name="colorPrimary">#1E3B5D</color>
+    <color name="colorSecondary">#345F88</color>
+    <color name="colorThird">#978683</color>
+    <color name="colorFourth">#ECEBF0</color>
 
     <color name="lavender">#8692f7</color>
 
-
-    <color name="textColor_two">#060c2e</color>
-    <color name="textColor_three">#202731</color>
+    <color name="textColor_one">#060c2e</color>
+    <color name="textColor_two">#202731</color>
     <color name="textColor_gray">#4A4848</color>
     <color name="labelColor_gray">#7a9db0</color>
 

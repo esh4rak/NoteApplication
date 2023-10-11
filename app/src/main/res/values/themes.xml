@@ -5,18 +5,16 @@
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorPrimaryVariant">@color/colorSecondary</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorSecondaryVariant">@color/colorThird</item>
         <item name="colorOnSecondary">@color/white</item>
 
 
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
-        <!--<item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>-->
 
     </style>
 

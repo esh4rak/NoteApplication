@@ -46,7 +46,7 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.btnSignUp.setOnClickListener {
+        binding.signupButton.setOnClickListener {
 
             val userRequest = getUserRequest()
             val validationResult = validateUserInput(userRequest)
@@ -54,13 +54,13 @@ class RegisterFragment : Fragment() {
             if (validationResult.first) {
                 authViewModel.registerUser(userRequest)
             } else {
-                binding.txtError.text = validationResult.second
+                binding.errorText.text = validationResult.second
             }
 
         }
 
 
-        binding.btnLogin.setOnClickListener {
+        binding.loginButton.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
@@ -70,9 +70,9 @@ class RegisterFragment : Fragment() {
 
 
     private fun getUserRequest(): UserRequest {
-        val username = binding.txtUsername.text.toString()
-        val emailAddress = binding.txtEmail.text.toString()
-        val password = binding.txtPassword.text.toString()
+        val username = binding.usernameET.text.toString()
+        val emailAddress = binding.emailET.text.toString()
+        val password = binding.passwordET.text.toString()
         return UserRequest(emailAddress, password, username)
     }
 
@@ -104,7 +104,7 @@ class RegisterFragment : Fragment() {
 
                 is NetworkResult.Error -> {
                     binding.progressbar.visibility = View.GONE
-                    binding.txtError.text = it.message
+                    binding.errorText.text = it.message
                 }
 
                 is NetworkResult.Loading -> {

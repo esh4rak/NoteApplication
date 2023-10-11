@@ -122,10 +122,17 @@ class MainFragment : Fragment() {
                 is NetworkResult.Success -> {
                     binding.progressBar.visibility = View.GONE
                     adapter.submitList(it.data)
+
+                    if (it.data!!.isEmpty()) {
+                        binding.nothingLayout.visibility = View.VISIBLE
+                    } else {
+                        binding.nothingLayout.visibility = View.GONE
+                    }
                 }
 
                 is NetworkResult.Error -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.nothingLayout.visibility = View.VISIBLE
                     Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT)
                         .show()
                 }

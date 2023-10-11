@@ -59,7 +59,7 @@
         android:layout_marginEnd="32dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noteTitleLabel">
@@ -75,6 +75,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="@font/sf_pro_display_medium"
             android:gravity="top|start"
+            android:hint="@string/txt_title_hint"
             android:inputType="textMultiLine"
             android:lineSpacingExtra="4sp"
             android:lines="1"
@@ -111,7 +112,7 @@
         android:layout_marginEnd="32dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noteDescriptionLabel">
@@ -127,6 +128,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="@font/sf_pro_display_medium"
             android:gravity="top|start"
+            android:hint="@string/txt_description_hint"
             android:inputType="textMultiLine"
             android:lineSpacingExtra="4sp"
             android:lines="8"

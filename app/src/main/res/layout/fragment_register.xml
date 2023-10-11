@@ -67,7 +67,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_username">
@@ -81,6 +81,7 @@
                 app:boxBackgroundColor="@android:color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="0dp"
+                    android:hint="@string/txt_username_hint"
                     android:inputType="text"
                     android:paddingTop="8dp"
                     android:textSize="14sp"
@@ -124,7 +126,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_email">
@@ -138,6 +140,7 @@
                 app:boxBackgroundColor="@android:color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,6 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="0dp"
+                    android:hint="@string/txt_email_hint"
                     android:inputType="textEmailAddress"
                     android:paddingTop="8dp"
                     android:textSize="14sp"
@@ -181,7 +185,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_password">
@@ -195,6 +199,7 @@
                 app:boxBackgroundColor="@android:color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -204,6 +209,7 @@
                     android:drawableStart="@drawable/ic_password"
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/labelColor_gray"
+                    android:hint="@string/txt_password_hint"
                     android:inputType="textPassword"
                     android:paddingTop="7dp"
                     android:textSize="14sp"

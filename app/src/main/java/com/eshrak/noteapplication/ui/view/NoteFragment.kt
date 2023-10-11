@@ -54,28 +54,28 @@ class NoteFragment : Fragment() {
 
             note = Gson().fromJson(jsonNote, NoteResponse::class.java)
             note?.let {
-                binding.txtTitle.setText(it.title)
-                binding.txtDescription.setText(it.description)
+                binding.noteTitleET.setText(it.title)
+                binding.noteDescriptionET.setText(it.description)
             }
 
         } else {
-            binding.addEditText.text = "Add Note"
+            binding.title.text = "Add Note"
         }
     }
 
 
     private fun bindHandler() {
 
-        binding.btnDelete.setOnClickListener {
+        binding.deleteButton.setOnClickListener {
             note?.let {
                 noteViewModel.deleteNote(it._id)
             }
         }
 
-        binding.btnSubmit.setOnClickListener {
+        binding.submitButton.setOnClickListener {
 
-            val title = binding.txtTitle.text.toString().trim()
-            val description = binding.txtDescription.text.toString().trim()
+            val title = binding.noteTitleET.text.toString().trim()
+            val description = binding.noteDescriptionET.text.toString().trim()
             val noteResult = NoteRequest(description, title)
             if (note == null) {
                 noteViewModel.createNote(noteResult)

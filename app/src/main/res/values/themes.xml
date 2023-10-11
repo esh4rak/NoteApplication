@@ -13,6 +13,7 @@
         <item name="colorOnSecondary">@color/white</item>
 
         <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:colorBackground">@color/white</item>
 
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

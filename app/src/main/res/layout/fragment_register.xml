@@ -91,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="0dp"
-                    android:inputType="phone"
+                    android:inputType="text"
                     android:paddingTop="8dp"
                     android:textSize="12sp"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -148,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="0dp"
-                    android:inputType="phone"
+                    android:inputType="textEmailAddress"
                     android:paddingTop="8dp"
                     android:textSize="12sp"
                     tools:ignore="SpeakableTextPresentCheck" />

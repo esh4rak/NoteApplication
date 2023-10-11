@@ -11,4 +11,7 @@ This is a simple note-taking app in Android with Integrated API.
 - Coroutines
 - API Integration: Retrofit
 - Navigation component
+- Offline Cashing using Room
+- Backend: Express.js
+- Database: MongoDB
 

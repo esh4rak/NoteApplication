@@ -42,10 +42,18 @@
             app:destination="@id/registerFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_quoteFragment"
+            app:destination="@id/quoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/noteFragment"
         android:name="com.eshrak.noteapplication.ui.view.NoteFragment"
         android:label="fragment_note"
         tools:layout="@layout/fragment_note" />
+    <fragment
+        android:id="@+id/quoteFragment"
+        android:name="com.eshrak.noteapplication.QuoteFragment"
+        android:label="fragment_quote"
+        tools:layout="@layout/fragment_quote" />
 </navigation>

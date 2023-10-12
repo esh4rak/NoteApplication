@@ -19,6 +19,11 @@
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_nav_about"
             android:title="@string/about_us" />
+
+        <item
+            android:id="@+id/nav_quote"
+            android:icon="@drawable/ic_nav_quote"
+            android:title="@string/quote" />
     </group>
     <item android:title="">
         <menu>

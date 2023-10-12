@@ -123,6 +123,11 @@ class MainFragment : Fragment() {
                     binding.drawerLayout.closeDrawers()
                 }
 
+                R.id.nav_quote -> {
+                    binding.drawerLayout.closeDrawers()
+                    findNavController().navigate(R.id.action_mainFragment_to_quoteFragment)
+                }
+
                 R.id.nav_logout -> {
                     binding.drawerLayout.closeDrawers()
                     tokenManager.clearSharedPreferences()

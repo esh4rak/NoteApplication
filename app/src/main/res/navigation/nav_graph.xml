@@ -53,7 +53,7 @@
         tools:layout="@layout/fragment_note" />
     <fragment
         android:id="@+id/quoteFragment"
-        android:name="com.eshrak.noteapplication.QuoteFragment"
+        android:name="com.eshrak.noteapplication.ui.view.QuoteFragment"
         android:label="fragment_quote"
         tools:layout="@layout/fragment_quote" />
 </navigation>

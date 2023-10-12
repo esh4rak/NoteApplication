@@ -2,8 +2,10 @@ package com.eshrak.noteapplication.di
 
 import com.eshrak.noteapplication.data.api.AuthInterceptor
 import com.eshrak.noteapplication.data.api.NoteApi
+import com.eshrak.noteapplication.data.api.QuoteAPI
 import com.eshrak.noteapplication.data.api.UserAPI
 import com.eshrak.noteapplication.util.Constants.BASE_URL
+import com.eshrak.noteapplication.util.Constants.BASE_URL_2
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,9 +24,19 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofitBuilder(): Retrofit.Builder {
+    @RetrofitBuilder1
+    fun provideRetrofitBuilder1(): Retrofit.Builder {
         return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
+    }
+
+
+    @Singleton
+    @Provides
+    @RetrofitBuilder2
+    fun provideRetrofitBuilder2(): Retrofit.Builder {
+        return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL_2)
     }
 
 
@@ -37,14 +49,23 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesUserAPI(retrofitBuilder: Retrofit.Builder): UserAPI {
+    fun providesUserAPI(@RetrofitBuilder1 retrofitBuilder: Retrofit.Builder): UserAPI {
         return retrofitBuilder.build().create(UserAPI::class.java)
     }
 
     @Singleton
     @Provides
-    fun providesNoteAPI(retrofitBuilder: Builder, okHttpClient: OkHttpClient): NoteApi {
+    fun providesNoteAPI(
+        @RetrofitBuilder1 retrofitBuilder: Builder, okHttpClient: OkHttpClient
+    ): NoteApi {
         return retrofitBuilder.client(okHttpClient).build().create(NoteApi::class.java)
+    }
+
+
+    @Singleton
+    @Provides
+    fun providesQuoteAPI(@RetrofitBuilder2 retrofitBuilder: Retrofit.Builder): QuoteAPI {
+        return retrofitBuilder.build().create(QuoteAPI::class.java)
     }
 
 }

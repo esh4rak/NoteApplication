@@ -1,4 +1,4 @@
-package com.eshrak.noteapplication
+package com.eshrak.noteapplication.ui.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

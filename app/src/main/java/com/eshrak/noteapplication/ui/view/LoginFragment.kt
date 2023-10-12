@@ -13,6 +13,7 @@ import com.eshrak.noteapplication.data.models.UserRequest
 import com.eshrak.noteapplication.databinding.FragmentLoginBinding
 import com.eshrak.noteapplication.ui.viewmodels.AuthViewModel
 import com.eshrak.noteapplication.util.NetworkResult
+import com.eshrak.noteapplication.util.SnackBarUtility
 import com.eshrak.noteapplication.util.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -50,7 +51,9 @@ class LoginFragment : Fragment() {
             if (validationResult.first) {
                 authViewModel.loginUser(userRequest)
             } else {
-                binding.errorText.text = validationResult.second
+                SnackBarUtility.showSnackBar(
+                    binding.root, validationResult.second
+                )
             }
 
         }
@@ -80,7 +83,12 @@ class LoginFragment : Fragment() {
 
                 is NetworkResult.Error -> {
                     binding.progressbar.visibility = View.GONE
-                    binding.errorText.text = it.message
+                    it.message?.let { it1 ->
+                        SnackBarUtility.showSnackBar(
+                            binding.root, it1
+                        )
+                    }
+
                 }
 
                 is NetworkResult.Loading -> {

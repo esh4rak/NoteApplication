@@ -10,9 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.eshrak.noteapplication.databinding.FragmentQuoteBinding
+import com.eshrak.noteapplication.paging.LoaderAdapter
 import com.eshrak.noteapplication.paging.QuotePagingAdapter
 import com.eshrak.noteapplication.ui.viewmodels.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class QuoteFragment : Fragment() {
@@ -44,7 +46,9 @@ class QuoteFragment : Fragment() {
         //Recycler View
         binding.recyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = LoaderAdapter(), footer = LoaderAdapter()
+        )
 
 
         //Observers

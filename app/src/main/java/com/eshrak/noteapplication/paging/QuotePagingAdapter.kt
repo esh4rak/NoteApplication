@@ -30,8 +30,8 @@ class QuotePagingAdapter :
 
     class QuoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val quote = itemView.findViewById<TextView>(R.id.quote)
-        val author = itemView.findViewById<TextView>(R.id.author)
+        val quote = itemView.findViewById<TextView>(R.id.quote)!!
+        val author = itemView.findViewById<TextView>(R.id.author)!!
     }
 
 

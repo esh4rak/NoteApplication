@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eshrak.noteapplication.data.models.NoteResponse
 import com.eshrak.noteapplication.databinding.ItemNoteBinding
 
+
 class NoteAdapter(private val onNoteClicked: (NoteResponse) -> Unit) :
     ListAdapter<NoteResponse, NoteAdapter.NoteViewHolder>(ComparatorDiffUtil()) {
 

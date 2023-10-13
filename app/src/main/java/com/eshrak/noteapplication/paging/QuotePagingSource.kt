@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.eshrak.noteapplication.data.api.QuoteAPI
 import com.eshrak.noteapplication.data.models.Result
 
-class QuotePagingSource(val quoteAPI: QuoteAPI) : PagingSource<Int, Result>() {
+class QuotePagingSource(private val quoteAPI: QuoteAPI) : PagingSource<Int, Result>() {
     override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
         return state.anchorPosition?.let {
             state.closestPageToPosition(it)?.prevKey?.plus(1)

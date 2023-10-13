@@ -59,7 +59,6 @@ class QuoteRemoteMediator(
 
 
             val response = quoteAPI.getQuotes(currentPage)
-
             val endOfPaginationReached = response.body()!!.totalPages == currentPage
 
 
@@ -67,6 +66,12 @@ class QuoteRemoteMediator(
             val nextPage = if (endOfPaginationReached) null else currentPage + 1
 
             appDatabase.withTransaction {
+
+                if (loadType == LoadType.REFRESH) {
+                    quoteDao.deleteQuotes()
+                    remoteKeyDao.deleteAllRemoteKeys()
+                }
+
                 quoteDao.addQuotes(response.body()!!.results)
 
                 val keys = response.body()!!.results.map { quote ->

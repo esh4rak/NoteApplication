@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.eshrak.noteapplication.databinding.FragmentQuoteBinding
 import com.eshrak.noteapplication.paging.LoaderAdapter
@@ -17,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
+@ExperimentalPagingApi
 class QuoteFragment : Fragment() {
 
     private var _binding: FragmentQuoteBinding? = null

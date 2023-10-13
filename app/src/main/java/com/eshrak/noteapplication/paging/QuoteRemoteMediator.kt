@@ -1,5 +1,6 @@
 package com.eshrak.noteapplication.paging
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -9,12 +10,12 @@ import com.eshrak.noteapplication.data.api.QuoteAPI
 import com.eshrak.noteapplication.data.db.AppDatabase
 import com.eshrak.noteapplication.data.models.QuoteRemoteKeys
 import com.eshrak.noteapplication.data.models.Result
+import com.eshrak.noteapplication.util.Constants.TAG
 
 
 @ExperimentalPagingApi
 class QuoteRemoteMediator(
-    private val quoteAPI: QuoteAPI,
-    private val appDatabase: AppDatabase
+    private val quoteAPI: QuoteAPI, private val appDatabase: AppDatabase
 ) : RemoteMediator<Int, Result>() {
 
     private val quoteDao = appDatabase.quoteDao()
@@ -34,25 +35,26 @@ class QuoteRemoteMediator(
             val currentPage = when (loadType) {
 
                 LoadType.REFRESH -> {
+                    Log.d(TAG, "LOAD TYPE REFRESH")
                     val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
                     remoteKeys?.nextPage?.minus(1) ?: 1
                 }
 
                 LoadType.PREPEND -> {
+                    Log.d(TAG, "LOAD TYPE PREPEND")
                     val remoteKeys = getRemoteKeyForFirstItem(state)
-                    val prevPage = remoteKeys?.prevPage
-                        ?: return MediatorResult.Success(
-                            endOfPaginationReached = remoteKeys != null
-                        )
+                    val prevPage = remoteKeys?.prevPage ?: return MediatorResult.Success(
+                        endOfPaginationReached = remoteKeys != null
+                    )
                     prevPage
                 }
 
                 LoadType.APPEND -> {
+                    Log.d(TAG, "LOAD TYPE APPEND")
                     val remoteKeys = getRemoteKeyForLastItem(state)
-                    val nextPage = remoteKeys?.nextPage
-                        ?: return MediatorResult.Success(
-                            endOfPaginationReached = remoteKeys != null
-                        )
+                    val nextPage = remoteKeys?.nextPage ?: return MediatorResult.Success(
+                        endOfPaginationReached = remoteKeys != null
+                    )
                     nextPage
                 }
             }
@@ -76,9 +78,7 @@ class QuoteRemoteMediator(
 
                 val keys = response.body()!!.results.map { quote ->
                     QuoteRemoteKeys(
-                        id = quote._id,
-                        prevPage = prevPage,
-                        nextPage = nextPage
+                        id = quote._id, prevPage = prevPage, nextPage = nextPage
                     )
                 }
 
@@ -106,19 +106,17 @@ class QuoteRemoteMediator(
     private suspend fun getRemoteKeyForFirstItem(
         state: PagingState<Int, Result>
     ): QuoteRemoteKeys? {
-        return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
-            ?.let { quote ->
-                remoteKeyDao.getRemoteKeys(id = quote._id)
-            }
+        return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { quote ->
+            remoteKeyDao.getRemoteKeys(id = quote._id)
+        }
     }
 
     private suspend fun getRemoteKeyForLastItem(
         state: PagingState<Int, Result>
     ): QuoteRemoteKeys? {
-        return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
-            ?.let { quote ->
-                remoteKeyDao.getRemoteKeys(id = quote._id)
-            }
+        return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { quote ->
+            remoteKeyDao.getRemoteKeys(id = quote._id)
+        }
     }
 
 }

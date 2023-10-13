@@ -161,6 +161,9 @@ class MainFragment : Fragment() {
                     binding.nothingLayout.visibility = View.VISIBLE
                     Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT)
                         .show()
+
+
+                    Log.e(TAG, it.message.toString())
                 }
 
                 is NetworkResult.Loading -> {

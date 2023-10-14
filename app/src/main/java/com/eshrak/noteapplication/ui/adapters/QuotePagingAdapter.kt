@@ -1,4 +1,4 @@
-package com.eshrak.noteapplication.paging
+package com.eshrak.noteapplication.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View

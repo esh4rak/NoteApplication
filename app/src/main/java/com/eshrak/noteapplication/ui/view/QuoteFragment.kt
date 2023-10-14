@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.eshrak.noteapplication.databinding.FragmentQuoteBinding
-import com.eshrak.noteapplication.paging.LoaderAdapter
-import com.eshrak.noteapplication.paging.QuotePagingAdapter
+import com.eshrak.noteapplication.ui.adapters.LoaderAdapter
+import com.eshrak.noteapplication.ui.adapters.QuotePagingAdapter
 import com.eshrak.noteapplication.ui.viewmodels.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

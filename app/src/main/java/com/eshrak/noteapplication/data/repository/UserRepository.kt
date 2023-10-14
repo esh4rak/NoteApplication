@@ -6,6 +6,8 @@ import com.eshrak.noteapplication.data.api.UserAPI
 import com.eshrak.noteapplication.data.models.UserRequest
 import com.eshrak.noteapplication.data.models.UserResponse
 import com.eshrak.noteapplication.util.NetworkResult
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import retrofit2.Response
 import javax.inject.Inject
@@ -30,8 +32,15 @@ class UserRepository @Inject constructor(private val userAPI: UserAPI) {
     suspend fun loginUser(userRequest: UserRequest) {
 
         _userResponseLiveData.postValue(NetworkResult.Loading())
-        val response = userAPI.signIn(userRequest)
-        handleResponse(response)
+
+        try {
+            val response = withContext(Dispatchers.IO) {
+                userAPI.signIn(userRequest)
+            }
+            handleResponse(response)
+        } catch (e: Exception) {
+            _userResponseLiveData.postValue(NetworkResult.Error("Network error: ${e.message}"))
+        }
     }
 
 

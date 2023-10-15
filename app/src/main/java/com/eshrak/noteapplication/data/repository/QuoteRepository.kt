@@ -15,14 +15,14 @@ class QuoteRepository @Inject constructor(
     private val quoteAPI: QuoteAPI, private val appDatabase: AppDatabase
 ) {
 
-    /*fun getQuotes() = Pager(
+    fun getQuotes() = Pager(
         config = PagingConfig(pageSize = 20, maxSize = 100),
         pagingSourceFactory = { QuotePagingSource(quoteAPI) }
-    ).liveData*/
+    ).liveData
 
 
-    fun getQuotes() = Pager(config = PagingConfig(pageSize = 20, maxSize = 100),
+    /*fun getQuotes() = Pager(config = PagingConfig(pageSize = 20, maxSize = 100),
         remoteMediator = QuoteRemoteMediator(quoteAPI, appDatabase),
-        pagingSourceFactory = { appDatabase.quoteDao().getQuotes() }).liveData
+        pagingSourceFactory = { appDatabase.quoteDao().getQuotes() }).liveData*/
 
 }

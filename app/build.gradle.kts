@@ -11,13 +11,13 @@ plugins {
 android {
     signingConfigs {
         getByName("debug") {
-            storeFile = file("D:\\Workspace\\JKS\\NoteApp\\eshraknoteapp.jks")
+            storeFile = file("E:\\Work Space\\LifePlus\\JKS\\NoteApp\\eshraknoteapp.jks")
             storePassword = "eshrak522"
             keyAlias = "key0"
             keyPassword = "eshrak522"
         }
         create("release") {
-            storeFile = file("D:\\Workspace\\JKS\\NoteApp\\eshraknoteapp.jks")
+            storeFile = file("E:\\Work Space\\LifePlus\\JKS\\NoteApp\\eshraknoteapp.jks")
             storePassword = "eshrak522"
             keyAlias = "key0"
             keyPassword = "eshrak522"
